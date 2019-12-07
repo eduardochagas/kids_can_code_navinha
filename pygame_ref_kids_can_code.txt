@@ -1,0 +1,96 @@
+
+    Site para pegar game arts (tem direitos autorais) para jogos: opengameart.org
+
+--------------------------------------------------------------------------
+
+módulo sprite do pygame
+
+    pygame.sprite.Sprite() - é uma classe básica para criar objetos para o jogo (essa classe É USADA COMO PARÂMETRO PARA QUALQUER CRIAÇÃO DE CLASSE NO JOGO).
+
+	ex:
+	    class nomeDoObjeto(pygame.sprite.Sprite):
+
+		def __init__(self):
+		    pygame.sprite.Sprite.__init__(self)
+
+
+		    OBS: é necessário inserir essa linha: pygame.sprite.Sprite.__init__(self) no construtor. Se não colocada, a classe não funcionará corretamente.  
+
+
+            pygame.sprite.Sprite.kill() - usado para deletar sprite.
+
+	        ex:
+		    if self.rect.bottom < HEIGHT:
+		        self.kill()
+		
+		OBS: O EXEMPLO ACIMA MOSTRA QUE SE O BOTTOM DA ÁREA RETÂNGULAR DE UMA IMAGEM FOR MENOR QUE A ALTURA DA TELA, QUE ESSA IMAGEM SEJA DELETADA DA TELA.
+
+
+
+    pygame.sprite.Group(*sprites) - usado para armazenar qualquer quantidade de sprite (uma sprite ou um grupo de sprites) nesse mesmo lugar (nesse mesmo grupo).
+
+    pygame.sprite.add(*sprites) - adiciona qualquer quantidade de sprites (uma sprite ou um grupo de sprites) para o grupo. 
+
+    pygame.sprite.Group.update() - usada para chamar o método atualiza de cada objeto armazenado em pygame.sprite.Group().
+
+    pygame.sprite.Group.draw(surface) - usado para pegar todas as sprites armazenadas em um grupo, e desenhar em uma superfície.
+
+    pygame.sprite.spritecollide(sprite, group, dokill) - retorna uma lista e faz a checagem da colisão de UMA SPRITE com UM GRUPO de sprites. A CHECAGEM DE COLISÃO É DETERMINADA COMPARANDO A ÁREA RETÂNGULAR (Sprite.rect) DE CADA SPRITE. O PRIMEIRO PARÂMETRO define a sprite única que será usada para a checagem de colisão. O SEGUNDO PARÂMETRO define o grupo de sprites ao qual será checada a colisão com a sprite do primeiro parâmetro. O TERCEIRO PARÂMETRO, se definido como True, ao haver colisão da sprite com os objetos definidos no grupo, remove esses objetos (que foram definidos no grupo) da tela. Se definido como False, mantêm esses objetos (que foram definidos no grupo) na tela.
+
+    
+    pygame.sprite.groupcollide(group1, group2, True, True) - esse comando procura por colisões de objetos de um grupo (group1) com o outro grupo (group2). O primeiro parâmetro define o primeiro grupo, o segundo parâmetro define o segundo grupo. O terceiro parâmetro se defindo como True, deleta da tela o(s) objeto(s) colididos do grupo1, se definido como False, não deleta da tela. O quarto parâmetro, se defindo como True, deleta da tela o(s) objeto(s) colididos do grupo2, se definido como False, não deleta da tela. 
+  
+
+
+
+--------------------------------------------------------------------------
+
+classe Surface do pygame
+
+    pygame.Surface.set_colorkey(cor) - usado em uma imagem para REMOVER A COR DE FUNDO DA ÁREA QUADRADA DA IMAGEM, deixando a área de fundo da imagem transparente. Você TEM QUE INSERIR NO PARÂMETRO A MESMA COR DE FUNDO DA IMAGEM para que A COR DE FUNDO FIQUE TRANSPARENTE.
+
+	ex:
+	   class Player(pygame.sprite.Sprite):
+    	        # sprite for the Player
+    	       def __init__(self):
+                   pygame.sprite.Sprite.__init__(self)
+                   self.image = pygame.image.load('imagem.png')
+	           self.image.set_colorkey(BLACK) # deixa a cor de fundo da imagem transparente
+                   self.rect = self.image.get_rect() 
+        	   self.rect.center = (WIDTH / 2, HEIGHT / 2) # o centro do retângulo ficará no centro da tela
+
+
+--------------------------------------------------------------------------------
+
+módulo key do Pygame
+
+    pygame.key.get_pressed() - retorna uma SEQUÊNCIA DE VALORES BOLEANOS QUE REPRESENTA O ESTADO DE CADA TECLA do teclado (o valor boleano dessa lista (em get_pressed()) para todas as teclas é True).
+
+        ex:
+	    self.speed = 0
+	    keys = pygame.key.get_pressed()
+	    if keys[pygame.K_LEFT]:
+	        self.speed = -5
+	    if keys[pygame.K_RIGHT]:
+	        self.speed = 5 
+
+
+
+-------------------------------------------------------------------------------
+
+módulo  do pygame      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
